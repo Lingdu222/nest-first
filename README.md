@@ -96,3 +96,10 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+## 安装pgSQL和type ORM
+
+## 配置pgSQL和type ORM
+## 响应拦截 和 异常处理
+## 连接数据库
