@@ -7,8 +7,11 @@ export class Class {
   id: number;
 
   @Column()
-  name: string;
+  title: string;
 
   @Column()
-  description: string;
+  class_img: string;
+  @Column()
+  price: number;
+  
 }
