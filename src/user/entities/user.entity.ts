@@ -13,8 +13,8 @@ export class User {
   userName: string;
 
   @Column()
-  password: number;
+  password: string;
 
   @Column()
-  head_img: string;
+  head_img?: string;
 }

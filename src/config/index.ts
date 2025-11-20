@@ -2,6 +2,7 @@
 // 编写配置文件 src/config/index.ts
 // 在主模块中导入 TypeOrmModule 并使用配置文件
 import type { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import type { JwtModuleOptions } from '@nestjs/jwt';
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mysql',
@@ -13,4 +14,11 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   autoLoadEntities: true,// 自动加载实体
   synchronize: true, // 是否自动将实体同步到数据库，生产环境建议关闭
+};
+
+
+
+// JWT配置
+export const jwtConfig:JwtModuleOptions = {
+  secret: '123456',
 };

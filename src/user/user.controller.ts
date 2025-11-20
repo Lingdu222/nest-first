@@ -1,13 +1,25 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import { CreateUserDto } from './dto/create-user.dto';
+import { LoginUserDto } from './dto/login-user.dto';
 
 @Controller('/user')
 export class UserController {
   constructor(private readonly UserService: UserService, @InjectRepository(User) private readonly userRepository: Repository<User>) { }
 
+  
+  @Post('register')
+  async register(@Body() createUserDto: CreateUserDto) {
+    return this.UserService.register(createUserDto);
+  }
+
+  @Post('login')
+  async login(@Body() loginUserDto: LoginUserDto) {
+    return this.UserService.login(loginUserDto);
+  }
 
 
   @Get()

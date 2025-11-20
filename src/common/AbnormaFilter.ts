@@ -22,14 +22,19 @@ export class AbnormaFilter implements ExceptionFilter {
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
     // 获取异常消息
-    const message =
+    const exceptionResponse =
       exception instanceof HttpException
         ? exception.getResponse()
-        : exception;
+        : { message: String(exception) };
+    
+    // 统一处理异常响应格式
+    const responseBody = typeof exceptionResponse === 'string' 
+      ? { message: exceptionResponse }
+      : exceptionResponse;
 
     response.status(status).json({
       statusCode: status,
-      message,
+      ...(typeof responseBody === 'object' ? responseBody : { message: responseBody }),
       timestamp: new Date().toISOString(),
     });
   }
